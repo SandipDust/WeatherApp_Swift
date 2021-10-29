@@ -6,6 +6,10 @@
 
 import UIKit
 
+
+
+
+
 class ViewController: UIViewController {
     
     let textField = UITextField()
@@ -14,12 +18,14 @@ class ViewController: UIViewController {
     let humidity = UILabel()
     let conditions = UILabel()
     
+    
+    
     var weatherManager = WeatherManager()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        view.backgroundColor = UIColor(red: 255/255.0, green: 218/255.0, blue: 121/255.0, alpha: 1)
+        view.backgroundColor = UIColor(patternImage: UIImage(named: "pic1.jpg")!)
       
         weatherManager.delegate = self
         
@@ -35,7 +41,7 @@ class ViewController: UIViewController {
     func configureTextField(){
         view.addSubview(textField)
         textField.translatesAutoresizingMaskIntoConstraints = false
-        textField.backgroundColor = UIColor(red: 204/255.0, green: 174/255.0, blue: 98/255.0, alpha: 1)
+        textField.backgroundColor = UIColor(red: 204/255.0, green: 174/255.0, blue: 98/255.0, alpha: 0.5)
         textField.placeholder = "🔍 Search"
         textField.tintColor = .white
         textField.delegate = self
@@ -47,6 +53,7 @@ class ViewController: UIViewController {
         cityName.text = ""
         cityName.textAlignment = .center
         cityName.font = UIFont.systemFont(ofSize: 30)
+        
     }
     
     func configureDescriptionLabel(){
@@ -55,6 +62,7 @@ class ViewController: UIViewController {
         conditions.text = ""
         conditions.textAlignment = .center
         conditions.font = UIFont.systemFont(ofSize: 20)
+        
     }
     
     func configureTemperatureLabel(){
@@ -63,6 +71,7 @@ class ViewController: UIViewController {
         temperature.text = ""
         temperature.textAlignment = .center
         temperature.font = UIFont.systemFont(ofSize: 70)
+        
     }
     
     
@@ -85,7 +94,6 @@ class ViewController: UIViewController {
         constraint.append(conditions.centerXAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerXAnchor))
         constraint.append(conditions.topAnchor.constraint(equalTo: cityName.bottomAnchor, constant: 20))
         
-       
         NSLayoutConstraint.activate(constraint)
 
 }
@@ -118,6 +126,7 @@ extension ViewController: UITextFieldDelegate {
         
     }
 }
+
 
 
 
